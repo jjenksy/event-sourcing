@@ -1,0 +1,49 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        addtaskinput:
+          destination: add.task
+          binder: rabbit1
+          group: addtask
+        addtaskoutput:
+          destination: add.task
+          binder: rabbit1
+        updatetaskinput:
+          destination: update.task
+          binder: rabbit1
+          group: updatetask
+        updatetaskoutput:
+          destination: update.task
+          binder: rabbit1
+        removetaskinput:
+          destination: remove.task
+          binder: rabbit1
+          group: removetask
+        removetaskoutput:
+            destination: remove.task
+            binder: rabbit1
+        completetaskinput:
+          destination: complete.task
+          binder: rabbit1
+          group: completetask
+        completetaskoutput:
+            destination: complete.task
+            binder: rabbit1
+        replaytaskinput:
+          destination: replay.events.task
+          binder: rabbit1
+          group: replay
+        replaytaskoutput:
+            destination: replay.events.task
+            binder: rabbit1
+      binders:
+        rabbit1:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: guest
+                password: guest
